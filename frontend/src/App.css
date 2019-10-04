@@ -29,6 +29,7 @@ body, input, button{
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 .content{
@@ -37,6 +38,7 @@ body, input, button{
   margin-top: 50px;
   border-radius: 4px;
   padding: 30px;
+  margin-bottom: 50px;
 }
 
 .content > p {

@@ -5,7 +5,7 @@ import camera from '../../assets/camera.svg';
 
 import './styles.css';
 
-export default function New(){
+export default function New({history}){
     const [thumbnail, setThumbnail] = useState(null);
     const [company, setCompany] = useState('');
     const [techs, setTechs] = useState('');
@@ -15,8 +15,11 @@ export default function New(){
         return thumbnail ? URL.createObjectURL(thumbnail) : null;
     }, [thumbnail])
     
-    async function handleSubmit(){
+    async function handleSubmit(event){
+        event.preventDefault();
+        
         const data = new FormData();
+        const user_id = localStorage.getItem('user');
 
         data.append('thumbnail', thumbnail);
         data.append('company', company);
@@ -24,7 +27,11 @@ export default function New(){
         data.append('price', price);
 
 
-        const reponse = await api.post('/spots', data)
+        await api.post('/spots', data, {
+            headers: { user_id } 
+        })
+
+        history.push('/dashboard');
     }
     
     return (
