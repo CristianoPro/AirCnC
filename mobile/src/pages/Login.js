@@ -32,7 +32,7 @@ export default function Login({ navigation }){
     }
 
     return (
-        <KeyboardAvoidingView  enabled={Platform.os == 'ios'} behavior="padding" style = {styles.container}>
+        <KeyboardAvoidingView  enabled={Platform.os == 'ios','android' } behavior="padding" style = {styles.container}>
             <Image source={logo}/>
 
             <View style={styles.form}>
